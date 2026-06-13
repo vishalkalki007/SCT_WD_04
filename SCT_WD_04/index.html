@@ -1,1 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Task Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+    <div class="app-container">
+        <aside class="sidebar">
+            <h2>My Lists</h2>
+            <ul class="list-categories" id="listCategories">
+                </ul>
+            <div class="add-list-wrapper">
+                <input type="text" id="newListInput" placeholder="Create new list...">
+                <button id="addListBtn">+</button>
+            </div>
+        </aside>
+
+        <main class="task-board">
+            <header class="board-header">
+                <h1 id="currentListName">Personal</h1>
+                <p id="taskCountSummary">0 pending tasks</p>
+            </header>
+
+            <section class="task-form-section">
+                <form id="taskForm">
+                    <div class="input-row">
+                        <input type="text" id="taskTitleInput" placeholder="What needs to be done?" required>
+                    </div>
+                    <div class="meta-row">
+                        <div class="date-picker-wrapper">
+                            <label for="taskDueInput">Due Date & Time:</label>
+                            <input type="datetime-local" id="taskDueInput">
+                        </div>
+                        <button type="submit" id="submitTaskBtn">Add Task</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="task-list-section">
+                <h3>Active Tasks</h3>
+                <div class="tasks-container" id="activeTasksContainer"></div>
+            </section>
+
+            <section class="task-list-section completed-section">
+                <h3>Completed Tasks</h3>
+                <div class="tasks-container" id="completedTasksContainer"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

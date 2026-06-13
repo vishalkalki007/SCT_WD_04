@@ -1,0 +1,170 @@
+:root {
+    --bg-app: #0f172a;
+    --sidebar-bg: #1e293b;
+    --card-bg: #334155;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --primary: #3b82f6;
+    --success: #10b981;
+    --danger: #ef4444;
+    --border: #475569;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+    background-color: var(--bg-app);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+}
+
+.app-container {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* Sidebar Layout */
+.sidebar {
+    width: 280px;
+    background-color: var(--sidebar-bg);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--border);
+}
+
+.sidebar h2 {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+    margin-bottom: 1.5rem;
+}
+
+.list-categories {
+    list-style: none;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.list-item-node {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+    transition: background-color 0.2s;
+}
+
+.list-item-node:hover, .list-item-node.active {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+.list-item-node.active { color: var(--primary); font-weight: 600; }
+
+.add-list-wrapper {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+/* Main Dashboard Workspace */
+.task-board {
+    flex-grow: 1;
+    padding: 3rem;
+    max-width: 900px;
+    margin: 0 auto;
+    overflow-y: auto;
+}
+
+.board-header { margin-bottom: 2rem; }
+.board-header h1 { font-size: 2.5rem; margin-bottom: 0.25rem; }
+.board-header p { color: var(--text-muted); }
+
+/* Task Form Component */
+.task-form-section {
+    background-color: var(--sidebar-bg);
+    padding: 1.5rem;
+    border-radius: 16px;
+    margin-bottom: 2.5rem;
+    border: 1px solid var(--border);
+}
+
+input[type="text"], input[type="datetime-local"] {
+    width: 100%;
+    background-color: var(--bg-app);
+    border: 1px solid var(--border);
+    padding: 0.75rem 1rem;
+    color: var(--text-main);
+    border-radius: 8px;
+    outline: none;
+    font-size: 1rem;
+}
+input[type="text"]:focus, input[type="datetime-local"]:focus { border-color: var(--primary); }
+
+.meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 1rem;
+    gap: 1.5rem;
+}
+.date-picker-wrapper { display: flex; flex-direction: column; gap: 0.5rem; flex-grow: 1; }
+.date-picker-wrapper label { font-size: 0.85rem; color: var(--text-muted); }
+
+button {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: filter 0.2s;
+}
+button:hover { filter: brightness(1.1); }
+
+/* Task Items Container Blocks */
+.task-list-section { margin-bottom: 2rem; }
+.task-list-section h3 { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 1rem; }
+
+.task-card {
+    background-color: var(--sidebar-bg);
+    border: 1px solid var(--border);
+    padding: 1rem 1.25rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+    gap: 1rem;
+}
+
+.task-left { display: flex; align-items: center; gap: 1rem; flex-grow: 1; }
+.task-card input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--success);
+    cursor: pointer;
+}
+
+.task-details { display: flex; flex-direction: column; gap: 0.25rem; }
+.task-title { font-weight: 500; font-size: 1.1rem; }
+.task-date { font-size: 0.85rem; color: var(--text-muted); }
+.task-date.overdue { color: var(--danger); font-weight: 600; }
+
+.task-actions { display: flex; gap: 0.5rem; }
+.edit-btn { background-color: #475569; padding: 0.5rem 1rem; font-size: 0.85rem; }
+.delete-btn { background-color: var(--danger); padding: 0.5rem 1rem; font-size: 0.85rem; }
+
+/* Status Modifier Overrides */
+.completed-section .task-title { text-decoration: line-through; color: var(--text-muted); }
+.completed-section .task-card { opacity: 0.65; }
